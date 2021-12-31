@@ -16,11 +16,7 @@ const Login = () => {
             password
         }
 
-        await axios.post(
-                'http://localhost:8000/api/login', 
-                data, 
-                { withCredentials: true }
-            )
+        await axios.post('login', data)
 
         setRedirect(true)
     }

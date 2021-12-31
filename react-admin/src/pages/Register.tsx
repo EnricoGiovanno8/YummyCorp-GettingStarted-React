@@ -25,7 +25,7 @@ class Register extends React.Component {
             role_id: 1
         }
 
-        await axios.post('http://localhost:8000/api/register', data)
+        await axios.post('register', data)
 
         this.setState({
             redirect: true
