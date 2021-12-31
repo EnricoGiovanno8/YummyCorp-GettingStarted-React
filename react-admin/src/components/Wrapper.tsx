@@ -11,6 +11,7 @@ const Wrapper = (props: any) => {
         (
             async () => {
                 try {
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
                     const { data } = await axios.get('user')
                 } catch (e) {
                     setRedirect(true)
