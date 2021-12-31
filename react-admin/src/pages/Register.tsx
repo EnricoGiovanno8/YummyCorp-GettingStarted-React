@@ -55,7 +55,7 @@ class Register extends React.Component {
                         <label htmlFor="floatingInput">Last Name</label>
                     </div>
                     <div className="form-floating">
-                        <input type="email" className="form-control" placeholder="Email"
+                        <input type="email" className="form-control" id="email" placeholder="Email"
                             onChange={(e) => this.email = e.target.value}
                         />
                         <label htmlFor="floatingInput">Email</label>
