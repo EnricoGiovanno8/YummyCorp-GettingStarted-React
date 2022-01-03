@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Paginator from "../../components/Paginator";
 import Wrapper from "../../components/Wrapper";
 import { Product } from "../../models/product";
 
@@ -19,18 +20,6 @@ const Products = () => {
             }
         )()
     }, [page])
-
-    const next = () => {
-        if (page < lastPage) {
-            setPage(page + 1)
-        }
-    }
-
-    const previous = () => {
-        if (page > 1) {
-            setPage(page - 1)
-        }
-    }
 
     const del = async (id: number) => {
         if (window.confirm(`Are you sure you want to delete Product #${id}`)) {
@@ -75,10 +64,7 @@ const Products = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="pagination">
-                <button style={{ marginRight: '10px' }} type="button" className="btn btn-primary" onClick={previous}>Previous</button>
-                <button type="button" className="btn btn-primary" onClick={next}>Next</button>
-            </div>
+            <Paginator page={page} lastPage={lastPage} /*pageChanged={page => setPage(page)} OR*/ pageChanged={setPage} />
         </Wrapper>
     )
 }
