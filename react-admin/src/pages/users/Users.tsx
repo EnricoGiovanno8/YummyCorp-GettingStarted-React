@@ -20,16 +20,24 @@ const Users = () => {
   }, [page])
 
   const next = () => {
-    console.log(page)
     if (page < lastPage) {
       setPage(page + 1)
     }
   }
 
   const previous = () => {
-    console.log(page)
     if (page > 1) {
       setPage(page - 1)
+    }
+  }
+
+  const del = async (id: number) => {
+    if (window.confirm(`Are you sure you want to delete User #${id}`)) {
+      await axios.delete(`users/${id}`)
+      const { data } = await axios.get(`users?page=${page}`)
+
+      setUsers(data.data)
+      setLastPage(data.meta.last_page)
     }
   }
 
@@ -54,7 +62,9 @@ const Users = () => {
                   <td>{user.first_name} {user.last_name}</td>
                   <td>{user.email}</td>
                   <td>{user.role.name}</td>
-                  <td></td>
+                  <td>
+                      <button type="button" className="btn btn-danger" onClick={() => del(user.id)}>Delete</button>
+                  </td>
                 </tr>
               )
             })}
