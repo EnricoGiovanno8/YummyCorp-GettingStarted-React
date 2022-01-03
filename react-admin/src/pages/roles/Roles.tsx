@@ -29,6 +29,11 @@ const Roles = () => {
 
     return (
         <Wrapper>
+            <div className="add-role">
+                <Link to="/roles/create">
+                    <button type="button" className="btn btn-success">Add</button>
+                </Link>
+            </div>
             <div className="table-responsive">
                 <table className="table table-striped table-sm">
                 <thead>

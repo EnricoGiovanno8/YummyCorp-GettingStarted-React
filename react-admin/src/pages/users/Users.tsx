@@ -46,7 +46,7 @@ const Users = () => {
     <Wrapper>
       <div className="add-user">
         <Link to="/users/create">
-          <button type="button" className="btn btn-success" onClick={previous}>Add</button>
+          <button type="button" className="btn btn-success">Add</button>
         </Link>
       </div>
 
