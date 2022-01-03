@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Wrapper from "../../components/Wrapper";
 import { User } from "../../models/user";
 
@@ -43,6 +44,12 @@ const Users = () => {
 
   return (
     <Wrapper>
+      <div className="add-user">
+        <Link to="/users/create">
+          <button type="button" className="btn btn-success" onClick={previous}>Add</button>
+        </Link>
+      </div>
+
       <div className="table-responsive">
         <table className="table table-striped table-sm">
           <thead>
@@ -71,6 +78,7 @@ const Users = () => {
           </tbody>
         </table>
       </div>
+
       <div className="pagination">
         <button style={{ marginRight: '10px' }} type="button" className="btn btn-primary" onClick={previous}>Previous</button>
         <button type="button" className="btn btn-primary" onClick={next}>Next</button>

@@ -33,7 +33,7 @@ const Nav = () => {
             
             <div className="navbar-nav" style={{ flexDirection: 'row' }}>
                 <Link to='/profile' className="nav-link px-3">{user.name}</Link>
-                <Link to='login' className="nav-link px-3" onClick={logout}>Sign out</Link>
+                <Link to='/login' className="nav-link px-3" onClick={logout}>Sign out</Link>
             </div>
         </nav>
     )
