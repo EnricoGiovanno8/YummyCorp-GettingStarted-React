@@ -33,6 +33,11 @@ const Products = () => {
 
     return (
         <Wrapper>
+            <div className="add-products">
+                <Link to="/products/create">
+                    <button type="button" className="btn btn-success">Add</button>
+                </Link>
+            </div>
             <div className="table-responsive">
                 <table className="table table-striped table-sm">
                     <thead>

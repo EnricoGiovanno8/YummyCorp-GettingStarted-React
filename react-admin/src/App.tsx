@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import ProductCreate from './pages/products/ProductCreate';
 import Products from './pages/products/Products';
 import Register from './pages/Register';
 import RoleCreate from './pages/roles/RoleCreate';
@@ -28,6 +29,7 @@ function App() {
           <Route path='/roles/create' element={<RoleCreate />}/>
           <Route path='/roles/:id' element={<RoleEdit />}/>
           <Route path='/products' element={<Products />}/>
+          <Route path='/products/create' element={<ProductCreate />}/>
         </Routes>
       </BrowserRouter>
     </div>
