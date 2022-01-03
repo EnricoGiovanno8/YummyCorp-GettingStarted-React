@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { SyntheticEvent, useState } from "react";
 import { Navigate } from "react-router-dom";
+import ImageUpload from "../../components/ImageUpload";
 import Wrapper from "../../components/Wrapper";
 
 const ProductCreate = () => {
@@ -42,7 +43,10 @@ const ProductCreate = () => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Product Image</label>
-                    <input type="text" className="form-control" placeholder="Product Image" onChange={(e) => setImage(e.target.value)} />
+                    <div>
+                        <input type="text" className="form-control" placeholder="Product Image" value={image} onChange={(e) => setImage(e.target.value)} />
+                        <ImageUpload uploaded={setImage}/>
+                    </div>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Product Price</label>
