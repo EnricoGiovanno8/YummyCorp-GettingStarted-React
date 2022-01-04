@@ -36,8 +36,22 @@ const Orders = () => {
         setSelected(selected === id ? 0 : id)
     }
 
+    const handleExport = async () => {
+        const { data } = await axios.post('export', {}, { responseType: 'blob' })
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const blob = new Blob([data], {type: 'text/csv'})
+        const url = window.URL.createObjectURL(data)
+        const link = document.createElement('a')
+        link.href = url
+        link.download = 'orders.csv'
+        link.click()
+    }
+
     return (
         <Wrapper>
+            <div className="export">
+                <button type="button" className="btn btn-secondary" onClick={handleExport}>Export</button>
+            </div>
             <div className="table-responsive">
                 <table className="table table-sm">
                 <thead>
