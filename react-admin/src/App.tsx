@@ -8,6 +8,7 @@ import Orders from './pages/orders/Orders';
 import ProductCreate from './pages/products/ProductCreate';
 import ProductEdit from './pages/products/ProductEdit';
 import Products from './pages/products/Products';
+import Profile from './pages/Profile';
 import Register from './pages/Register';
 import RoleCreate from './pages/roles/RoleCreate';
 import RoleEdit from './pages/roles/RoleEdit';
@@ -34,6 +35,7 @@ function App() {
           <Route path='/products/create' element={<ProductCreate />}/>
           <Route path='/products/:id' element={<ProductEdit />}/>
           <Route path='/orders' element={<Orders />}/>
+          <Route path='/profile' element={<Profile />}/>
         </Routes>
       </BrowserRouter>
     </div>
