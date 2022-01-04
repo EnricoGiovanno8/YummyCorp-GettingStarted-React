@@ -1,8 +1,11 @@
 import axios from "axios";
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { Dispatch, SyntheticEvent, useEffect, useState } from "react";
+import { connect } from "react-redux";
 import Wrapper from "../components/Wrapper";
+import { User } from "../models/user";
+import { setUser } from "../redux/actions/setUserAction";
 
-const Profile = () => {
+const Profile = (props: {user: User, setUser: (user: User) => void}) => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -12,16 +15,12 @@ const Profile = () => {
     useEffect(() => {
         (
             async () => {
-                const { data } = await axios.get('user')
-
-                setFirstName(data.first_name)
-                setLastName(data.last_name)
-                setEmail(data.email)
-                setPassword(data.password)
-                setPasswordConfirm(data.password_confirm)
+                setFirstName(props.user.first_name)
+                setLastName(props.user.last_name)
+                setEmail(props.user.email)
             }
         )()
-    }, [])
+    }, [props.user])
 
     const submitProfile = async (e: SyntheticEvent) => {
         e.preventDefault()
@@ -32,7 +31,15 @@ const Profile = () => {
             email
         }
 
-        await axios.put('users/info', sendData)
+        const { data } = await axios.put('users/info', sendData)
+
+        props.setUser(new User(
+            data.id,
+            data.first_name,
+            data.last_name,
+            data.email,
+            data.role
+        ))
     }
 
     const submitPassword = async (e: SyntheticEvent) => {
@@ -98,4 +105,16 @@ const Profile = () => {
     )
 }
 
-export default Profile
+const mapStateToProps = (state: {user: User}) => {
+    return {
+        user: state.user
+    }
+}
+
+const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+    return {
+        setUser: (user: User) => dispatch(setUser(user))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
