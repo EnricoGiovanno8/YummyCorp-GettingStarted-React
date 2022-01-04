@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import Orders from './pages/orders/Orders';
 import ProductCreate from './pages/products/ProductCreate';
 import ProductEdit from './pages/products/ProductEdit';
 import Products from './pages/products/Products';
@@ -32,6 +33,7 @@ function App() {
           <Route path='/products' element={<Products />}/>
           <Route path='/products/create' element={<ProductCreate />}/>
           <Route path='/products/:id' element={<ProductEdit />}/>
+          <Route path='/orders' element={<Orders />}/>
         </Routes>
       </BrowserRouter>
     </div>
